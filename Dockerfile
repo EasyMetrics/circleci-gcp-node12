@@ -17,7 +17,6 @@ RUN apt-get -qqy update && apt-get -qqy upgrade && apt-get install -qqy \
         apt-transport-https \
         lsb-release \
         openssh-client \
-        openjdk-8-jdk-headless \
         git \
     && easy_install -U pip && \
     pip install -U crcmod   && \
@@ -30,7 +29,6 @@ RUN apt-get -qqy update && apt-get -qqy upgrade && apt-get install -qqy \
         google-cloud-sdk-app-engine-java \
         google-cloud-sdk-app-engine-go \
         google-cloud-sdk-datalab \
-        google-cloud-sdk-datastore-emulator \
         google-cloud-sdk-pubsub-emulator \
         google-cloud-sdk-bigtable-emulator \
         google-cloud-sdk-cbt \
@@ -47,7 +45,6 @@ RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90circleci \
   && echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/90circleci
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV JAVA_HOME  /usr/lib/jvm/java-8-openjdk-amd64/
 
 RUN apt-get update \
   && apt-get install -y  -q --no-install-recommends \
