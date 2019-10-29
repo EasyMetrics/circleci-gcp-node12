@@ -18,6 +18,7 @@ RUN apt-get -qqy update && apt-get -qqy upgrade && apt-get install -qqy \
         lsb-release \
         openssh-client \
         git \
+        xvfb libgtk-3-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 \
     && easy_install -U pip && \
     pip install -U crcmod   && \
     export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" && \
