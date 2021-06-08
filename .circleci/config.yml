@@ -6,8 +6,7 @@ jobs:
     working_directory: ~/circleci-gcp-node12
 
     branches:
-      only:
-        - master
+      only: master
     steps:
       - checkout
       - setup_remote_docker
@@ -33,8 +32,7 @@ jobs:
     working_directory: ~/circleci-gcp-node12
 
     branches:
-      only:
-        - next
+      only: next
     steps:
       - checkout
       - setup_remote_docker
