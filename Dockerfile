@@ -7,7 +7,7 @@ USER root
 # Install and Configure Google Cloud SDK
 # ...
 
-ENV CLOUD_SDK_VERSION 201.0.0
+ENV CLOUD_SDK_VERSION 343.0.0
 
 RUN apt-get -qqy update && apt-get -qqy upgrade && apt-get install -qqy \
         curl \
