@@ -1,12 +1,9 @@
 version: 2
 jobs:
-  build:
+  Build:
     docker:
       - image: docker:17.05.0-ce-git
     working_directory: ~/circleci-gcp-node12
-
-    branches:
-      only: master
     steps:
       - checkout
       - setup_remote_docker
@@ -26,13 +23,10 @@ jobs:
               ${login}
               docker tag circleci-gcp-node12 easymetrics/circleci-gcp-node12
               docker push easymetrics/circleci-gcp-node12
-  build-dev:
+  Build Dev:
     docker:
       - image: docker:17.05.0-ce-git
     working_directory: ~/circleci-gcp-node12
-
-    branches:
-      only: next
     steps:
       - checkout
       - setup_remote_docker
@@ -52,3 +46,20 @@ jobs:
               ${login}
               docker tag circleci-gcp-node12 easymetrics/circleci-gcp-node12:next
               docker push easymetrics/circleci-gcp-node12:next
+
+workflows:
+  version: 2
+  build-container:
+    jobs:
+      - Build:
+          filters:
+            tags:
+              ignore: /^v.*/
+            branches:
+              only: master
+      - Build Dev:
+          filters:
+            tags:
+              ignore: /^v.*/
+            branches:
+              only: next
